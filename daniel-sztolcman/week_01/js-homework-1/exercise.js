@@ -26,8 +26,9 @@ var halfNumber = function (number) {
 halfNumber(5);
 
 var percentOf = function (number1, number2) {
-	var percentOfResult = number1 / number2 * 100 + "%";
-	console.log(number1 + " is " + percentOfResult + " of " + number2);
+	var percentOfResult = number1 / number2 * 100;
+	percentOfResult = Number(Math.round(percentOfResult + 'e2')+'e-2'); //not sure why but part2 seems to come up with undefined when .toFixed2 for percentageOfResult
+	console.log(number1 + " is " + percentOfResult+ "% of " + number2);
 	return percentOfResult;
 }
 
@@ -52,17 +53,15 @@ Calculate the area of a circle with the result of #2 as the radius.
 Calculate what percentage that area is of the squared result (#3).
 */
 
-var newResult = function (number){
-	for (squareNumber(number){
-		return squareResult;
-	}
-	halfNumber(number);
-
-
-
+var calculator = function (number){
+	var result1 = halfNumber(number);
+	var result2 = squareNumber(result1);
+	var result3 = areaOfCircle(result2);
+	var result4 = percentOf(result2, result3);
+	console.log(result4);
 }
+calculator(5);
 
-console.log(newResult(5));
 /*
 DrEvil
 
@@ -76,8 +75,7 @@ var DrEvil = function (dollars) {
 	if (dollars === 1000000){
 		return dollars + " dollars (pinky)";
 	}
-	else
-	{
+	else{
 		return dollars + " dollars";
 	}
 }
@@ -112,13 +110,23 @@ Create a function called fixStart. It should take a single argument, a string, a
 fixStart('babble'): 'ba**le'
 */
 
+
 var fixStart = function (string) {
 	if (string.length >1 ){
-
-	} else {null}
+		var sliceString = string.slice(1); //slices string at second letter
+		var firstLetterOfString = string[0]; //defines the first letter of the string, which has been sliced off from the rest of the string as the first letter i.e. [0]
+		var remainderOfString = sliceString.replace(new RegExp(firstLetterOfString, 'g'), '*');
+		/*
+		RegExp = regular expression - an object that describes a pattern of changes. Regular expressions used to perform pattern matching and "search-and-replace" functions on text. Coupled with a modifier: 'i' for case-sensitive matching, 'g' for global matching, 'm' for multiline matching.
+		*/
+		console.log(firstLetterOfString + remainderOfString);
+		return firstLetterOfString + remainderOfString;
+	} else {return string}
 }
 
-
+fixStart("babble");
+fixStart("arkansas");
+fixStart("sassy");
 
 /*Create a function called verbing. It should take a single argument, a string. If its length is at least 3, it should add 'ing' to its end, unless it already ends in 'ing', in which case it should add 'ly' instead. If the string length is less than 3, it should leave it unchanged. For example:*/
 //word.length        slice(-3)
@@ -136,3 +144,21 @@ var verbing = function (word) {
 
 console.log(verbing('jump'));
 console.log(verbing('swimming'));
+console.log('go');
+
+/*
+Not Bad
+
+Create a function called notBad that takes a single argument, a string.
+
+It should find the first appearance of the substring 'not' and 'bad'.
+If the 'bad' follows the 'not', then it should replace the whole 'not'...'bad' substring with 'good' and return the result.
+If it doesn't find 'not' and 'bad' in the right sequence (or at all), just return the original sentence.
+For example:
+
+  notBad('This dinner is not that bad!'): 'This dinner is good!'
+  notBad('This movie is not so bad!'): 'This movie is good!'
+  notBad('This dinner is bad!'): 'This dinner is bad!'
+*/
+
+
