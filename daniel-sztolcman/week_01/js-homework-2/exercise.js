@@ -65,7 +65,7 @@ var reverseString = function(arr){
 	console.log(arr.reverse());
 }
 reverseString(arr);
-
+/*
 var reverseString = function (str){
 	for (var i = str.length -1 ; i>= 0; i--){
 		var reversedCharacters = str.charAt(i); // breaks up the string into individual characters
@@ -77,6 +77,7 @@ var reverseString = function (str){
 reverseString("jag testar");
 
 //Write a function findLongestWord that takes an array of words and returns the length of the longest one.
+
 var arr = ["hello", "goodbye", "afternoon", "battleship"];
 
 var findLongestWord = function (arr){
@@ -95,7 +96,7 @@ console.log("The longest word in the array is: " + findLongestWord(arr));
 Write a function filterLongWords that takes an array of words and an number i and returns the array of words that are longer than i.
 Raw  js-homework-3.md
 */
-/*
+
 var arr = ["lion", "tiger", "elephant", "kangaroo"];
 var filterLongWords = function (arr, i){
 	var newArr = [];
@@ -131,8 +132,78 @@ It should also figure out if there are any more letters that need to be guessed,
 Pretend you don't know the word, and call guessLetter multiple times with various letters to check that your program works.
 */
 
+var word = []; // Declares an empty array called word
+var guessedWord = [];
+var guessedLetters = [];
+
+var setWord = function ( string ) {
+	word = string.split(""); //Splits a string into an array
+	
+	for (var i = 0; i < word.length; i++) {
+	guessedWord.push("*"); // Pushes "*" into an array for the length of the word that needs to be guessed
+	
+	}
+}
+
+var guessLetter = function ( letter ) {
+	// Does the letter that you gest already exist in the guessedLetters array?
+	if (guessedLetters.indexOf ( letter ) >=  0) {
+		console.log ( " You have already guessed that!" );
+		// >=0 means true so it means that the letter has already been guessed
+	} else {
+		guessedLetters.push ( letter );
+		console.log ( guessedLetters );
+		var guessedIndex = word.indexOf( letter );
+		// Does the guessed letter exist in the original word (i.e. the word that was set)
+
+		if ( guessedIndex >= 0 ) {
+			// if we found a letter that was guessed in a word (>=0 means true)
+			guessedWord[guessedIndex] = letter;
+			// puts the guessed letter into the correct place in the guessedWord array in correlation to the original word
+			console.log ( guessedWord );
+			if (guessedWord.indexOf("*") < 0 ) {
+				return alert( "You Won !" );
+			} 
+		}
+	}
+	guessLetter(prompt("What is your guess?"))
+}
+
+setWord(prompt("What word do you want to play wit?");)
+
+/*
+var word = [];
+var str;
+
+var wordGuesser = 
+var inputWord = function (word){
+	prompt("Please choose the word for someone to guess");
+	return word;
+};
+
+
+var userInput = function (letter){
+	prompt("Guess the word by typing in a letter");
+	return letter;
+};
+
+var userInterface = function (blankArr){
+	var str = inputWord();
+	for (i = 0; i < str.length ; i++){
+		var blankArr = [];
+		blankArr.push("*");
+		
+	}
+	console.log(blankArr);
+	return blankArr;
+};
+
+userInterface();
+
+/*
 var word = ["f", "o" , "x"];
 var userInterface = ['*','*','*'];
+
 var wordsLeftToGuess = word.length-1;
 
  var guessLetter = function (guess){
@@ -150,7 +221,7 @@ var wordsLeftToGuess = word.length-1;
 
 	}
  }
-guessLetter(prompt("Guess a word"));
+guessLetter(prompt("Guess a word")); */
 // 	/*
 // 	var guess = false;
 // 	var blanksRemaining = true;
