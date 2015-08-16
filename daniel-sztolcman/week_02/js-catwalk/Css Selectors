@@ -1,0 +1,15 @@
+Css Selectors
+
+tagname - p, div, body (low specificity)
+
+ID selector = $someID (high specificity --- don't use really... class is better)
+
+Descendent selectors = body div (medium specificity - xpath - going down the DOM tree)
+
+class = .someClass (some specificity)
+
+Multiple selector - h1, h2 (low specificity)
+
+Wildcard - * (very low specificty)
+
+Adjacent Selector = parent + child (find all children adjacent to the11)
